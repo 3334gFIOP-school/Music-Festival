@@ -69,7 +69,7 @@ def main(admin,id,performances): # Main function for running things
         elif choice == 6: # Venues
             pass
         elif choice == 7: # Switch to administrator
-            admin_check(admin,id)
+            admin_check(admin,id,performances)
         elif choice == 8: # Exit
             cs()
             print('Thanks for attending!')
@@ -148,8 +148,8 @@ def gen_rand_ticket(age_list,total_money,tickets_bought,male_ratio,female_ratio,
     amount = int_input("How many tickets do you want to generate?: ")
     print()
     for x in range(amount):
-        firstname = random.choice(["Jackson","Gavin","Nicole","Luke","Lizzy","Hauley","Saldana","Murdock","Pierce"])
-        lastname = random.choice(["Jackson","Gavin","Nicole","Luke","Lizzy","Hauley","Saldana","Murdock","Pierce"])
+        firstname = random.choice(["Jackson","Gavin","Nicole","Luke","Lizzy","Hauley","Saldana","Murdock","Pierce","Lincoln","Haggard","Eli","Cooper","Owen","Bowerbank","Powerbank","LaRose","Alec","George","Busby","RealHumanFirstName001"])
+        lastname = random.choice(["Jackson","Gavin","Nicole","Luke","Lizzy","Hauley","Saldana","Murdock","Pierce","Lincoln","Haggard","Eli","Cooper","Owen","Bowerbank","Powerbank","LaRose","Alec","George","Busby","RealHumanLastName002"])
         age = random.choice(list(range(1,120)))
         age_list.append(age)
         membership = random.choice(["NPC","VIP","MVP"])
@@ -402,7 +402,7 @@ Duration Levels:
     1 Month: 30 days in the convention from 7:00am to 10:00pm (29 overnights)
     Season Pass: Full season access to the convention any time, 1 free meal a day (stackable with MVP)
 
-Your information is kept in a secure online server with {random.randint(1,1000)} firewalls protecting it RIGHT NOW
+Your information is kept in a secure online server with {random.randint(random.randint(random.randint(random.randint(random.randint(random.randint(random.randint(random.randint(random.randint(1,10000000000),10000000000),10000000000),10000000000),10000000000),10000000000),10000000000),10000000000),10000000000)} firewalls protecting it RIGHT NOW
           """)   
     input('Press enter to continue')
 
