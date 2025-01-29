@@ -430,19 +430,15 @@ def artist_nonadmin_main():
         elif choice == 3:
             main(admin,id,performances)
         else:
-            print("Not in Range\nClick Enter to Continue")
+            print("Not in Range\nPress enter to continue")
             input()
 
 def artist_admin_main(): # Lets the user choose how they want to manipulate the artist list.
     while True:
         cs()
         choice = int_input("\nArtist List Management\n\n1. Display\n2. Search\n3. Add\n4. Remove\n5. Edit\n6. Exit\n")
-        if choice == 1: # Displays the artist list
-            print("Displaying Artists\n")
-            for artist in artist_list:
-                print(f"Artist:\n Name- {artist[0]}\n Genre- {artist[1]}\n Time- {artist[2]}\n")
-            input("Click Enter to Continue\n")
-
+        if choice == 1:
+            artist_display()
         elif choice == 2:
             search_artist()
         elif choice == 3:
@@ -454,7 +450,7 @@ def artist_admin_main(): # Lets the user choose how they want to manipulate the 
         elif choice == 6:
             main(admin,id,performances)
         else:
-            print("Not in Range\nClick Enter to Continue")
+            print("Not in Range\nPress enter to continue")
             input()
 
 def artist_display(): # Displays the artist list
@@ -463,7 +459,7 @@ def artist_display(): # Displays the artist list
         print("Nothing In List\n")
     for artist in artist_list:
         print(f"Artist:\n Name- {artist[0]}\n Genre- {artist[1]}\n Time- {artist[2]}\n")
-    input("Click Enter to Continue\n")
+    input("Press enter to continue\n")
 
 def search_artist(): # It shows results of the word used to search through the artist list.
     artist_results = []
@@ -478,7 +474,7 @@ def search_artist(): # It shows results of the word used to search through the a
     print(f"Results: {'None Found' if artist_results == [] else ''}\n")
     for artist in artist_results:
         print(f"Artist:\n Name- {artist[0]}\n Genre- {artist[1]}\n Time- {artist[2]}\n")
-    input("Click Enter to Continue\n")
+    input("Press enter to continue\n")
 
 def add_artist(): # Lets the user add an artist and their information to the list.
     print("Adding An Artist")
@@ -528,24 +524,8 @@ def edit_artist(): # Edits the specified information to the inputted information
             artist_list[artist_num][change_type] = new_text
             edited = 1
     if edited == 0:
-        print("Not In List\nClick Enter to Continue")
+        print("Not In List\nPress enter to continue")
         input()
-
-def search_artist(): # It shows results of the word used to search through the artist list.
-    artist_results = []
-    print("Searching For An Artist")
-    artist_search = str_input("Search for the artist through their name, genre, or time: ").upper()
-    for artist in artist_list:
-        for fact in artist:
-            if artist_search in str(fact).upper():
-                artist_results.append(artist)
-                break
-            
-    for artist in artist_results:
-        print("\nResults:\n")
-        print(f"Artist:\n Name- {artist[0]}\n Genre- {artist[1]}\n Time- {artist[2]}\n")
-    input("Press Enter to Continue\n")
-
 
 
 
