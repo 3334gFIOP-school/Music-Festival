@@ -41,7 +41,7 @@ age_list = []
 
 # Defining Funcitons
 
-def main(admin,id): # Main function for running things
+def main(admin,id,performances): # Main function for running things
     if admin == True: 
         user = "Admin" # Changes name based on admin or not
     else: 
@@ -59,9 +59,9 @@ def main(admin,id): # Main function for running things
         if choice == 1: # Information
             pass
         elif choice == 2: # Tickets
-            ticket_main(admin,id)
+            ticket_main(admin,id,performances)
         elif choice == 3: # Schedule
-            schedule_main(admin)
+            schedule_main(admin,performances)
         elif choice == 4: # Artist List
             artist_main(admin)
         elif choice == 5: # Recommendation
@@ -115,7 +115,7 @@ def recommendation():
     input("Press enter to continue")
 
 
-def ticket_main(admin,id): # Ticket main function (runs all ticket information through here) (jacksons function)
+def ticket_main(admin,id,performances): # Ticket main function (runs all ticket information through here) (jacksons function)
     if admin == True:
         while True:
             cs()
@@ -129,7 +129,7 @@ def ticket_main(admin,id): # Ticket main function (runs all ticket information t
             elif choice == 4: # Random People Generator
                 id = gen_rand_ticket(age_list,total_money,tickets_bought,male_ratio,female_ratio,id)
             elif choice == 5: # Random People Generator
-                main(admin,id)
+                main(admin,id,performances)
             else:
                 input('Invalid Input!\nPress enter to continue')
     else:
@@ -141,7 +141,7 @@ def ticket_main(admin,id): # Ticket main function (runs all ticket information t
             elif choice == 2: # Ticket Information
                 ticket_information()
             elif choice == 3: # Exit
-                main(admin,id)
+                main(admin,id,performances)
 
 def gen_rand_ticket(age_list,total_money,tickets_bought,male_ratio,female_ratio,id): # Random Ticket Generator
     cs()
@@ -428,7 +428,7 @@ def artist_nonadmin_main():
         elif choice == 2:
             search_artist()
         elif choice == 3:
-            main(admin,id)
+            main(admin,id,performances)
         else:
             print("Not in Range\nClick Enter to Continue")
             input()
@@ -452,7 +452,7 @@ def artist_admin_main(): # Lets the user choose how they want to manipulate the 
         elif choice == 5:
             edit_artist()
         elif choice == 6:
-            main(admin,id)
+            main(admin,id,performances)
         else:
             print("Not in Range\nClick Enter to Continue")
             input()
@@ -551,18 +551,18 @@ def search_artist(): # It shows results of the word used to search through the a
 
 # Gavins code
 
-def schedule_main(admin): # schedule main function 
+def schedule_main(admin,performances): # schedule main function 
     if admin == True:
         while True:
             cs()
             choice = int_input("SCHEDULE MENU\n\n1.add to schedule\n\n2. remove item from schedule\n3. exit\n\nPick one (1-3): ")
 
             if choice == 1: # adds schedule info
-                schedule_add()
+                schedule_add(performances)
             elif choice == 2: # removes from schedule
-                schedule_remove()
+                schedule_remove(performances)
             elif choice == 3: # exit
-                main(admin,id)
+                main(admin,id,performances)
             else:
                 input('Invalid Input!\nPress enter to continue')
     else:
@@ -574,13 +574,13 @@ def schedule_main(admin): # schedule main function
                 pass
 
             elif choice == 2: # Exit
-                main(admin,id)
+                main(admin,id,performances)
 
 
 # the schedule
 
 # adds people to schedule
-def schedule_add():
+def schedule_add(performances):
     artist_name_add=input("what is the artist's name? ")
     artist_intrument_add=input("what is their intrument? ")
     artist_gener_add=input("what is their gener? ")
@@ -591,8 +591,8 @@ def schedule_add():
     print(artist_list)
 
 # removes from schedule
-def schedule_remove():
-            artist_remove=input("what is the artist's name that you would like to remove ")
+def schedule_remove(performances):
+            artist_remove=input("what is the artist's name that you would like to remove? (exact): ")
             performances.remove(artist_remove)
             performances-=1
             print(artist_list)
@@ -602,13 +602,13 @@ def schedule_change():
             artist_change=("what is the artist that you would like to change?")
 
 
-def admin_check(admin,id): # Checks if your admin or not (login interface)
+def admin_check(admin,id,performances): # Checks if your admin or not (login interface)
     while True:
         cs()
         choice = int_input("Music Festival Login\n\n1. User login\n2. Admin login\n\nWhich one are you logging into? (1-2): ")
         if choice == 1: # User Login
             admin = False
-            main(admin,id)
+            main(admin,id,performances)
         elif choice == 2: # Admin Login
             cs()
             print("Admin Login Terminal")
@@ -618,11 +618,11 @@ def admin_check(admin,id): # Checks if your admin or not (login interface)
                 print("\nPassword Verified!")
                 admin = True
                 input("\nWelcome Admin!\nPress enter to continue")
-                main(admin,id)
+                main(admin,id,performances)
             else: # If incorrect
                 input("Invalid Password!\nPress enter to continue")
         else:
             input("Invalid Input! (1-2)\nPress enter to continue")
 
 # Running the Code
-admin_check(admin,id) # Checks if they are admin or not, then runs main
+admin_check(admin,id,performances) # Checks if they are admin or not, then runs main
