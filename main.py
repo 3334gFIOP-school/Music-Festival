@@ -31,7 +31,7 @@ artist_list.extend(performances)
 for artist_num, artist in enumerate(performances):
     artist_list[artist_num].pop()
     artist_list[artist_num].remove(artist[1])
-    artist_list[artist_num].append(60)
+    artist_list[artist_num].append(random.randint(0, 120))
 
 
 
