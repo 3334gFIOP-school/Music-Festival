@@ -67,7 +67,7 @@ def main(admin,id): # Main function for running things
         elif choice == 5: # Recommendation
             recommendation()
         elif choice == 6: # Venues
-            pass
+            venue_main_checker(admin)
         elif choice == 7: # Switch to administrator
             admin_check(admin,id)
         elif choice == 8: # Exit
@@ -609,6 +609,7 @@ venue_stages = {}
 venue_equipment = {}
 
 def display_venues(): #displays the venues
+    cs()
     if venue_names:
         print("_______Venues available:_______")
         for venue in venue_names:
@@ -618,6 +619,7 @@ def display_venues(): #displays the venues
         print("No venues available.")
 
 def add_venue(): #Adds venues+stages
+    cs()
     venue = input("What is the name of the venue you would like to add?: ").lower()
     venue_names.add(venue)
     print(f"{venue} added!")
@@ -628,6 +630,7 @@ def add_venue(): #Adds venues+stages
     print(f"{stage} was added to the {venue}.")
 
 def remove_venue(): #Removes venues
+    cs()
     display_venues()
     print("__________________")
     venue = input("Which venue would you like to remove?: ").lower()
@@ -640,6 +643,7 @@ def remove_venue(): #Removes venues
         print(f"{venue} was not found.")
 
 def display_stages(): #Displays venues and all their stages
+    cs()
     if venue_stages:
         print("Stages and their venues:")
         print("____________________")
@@ -649,6 +653,7 @@ def display_stages(): #Displays venues and all their stages
         print("There are no stages yet.")
 
 def add_equipment(): #Adds equipment to the venues
+    cs()
     venue = input("Enter the venue where you want to add equipment: ").lower()
     if venue in venue_names:
         equipment = input("Enter the equipment name to add: ").lower()
@@ -658,6 +663,7 @@ def add_equipment(): #Adds equipment to the venues
         print(f"{venue} was not found.")
 
 def remove_equipment(): #removes equipment
+    cs()
     venue = input("What Venue would you like to remove from?: ").lower()
     if venue in venue_names:
         equipment = input("Enter the equipment name to remove: ").lower()
@@ -670,6 +676,7 @@ def remove_equipment(): #removes equipment
         print(f"{venue} was not found.")
 
 def display_equipment(): #Displays ALL the equipment on a given stage for a given venue
+    cs()
     if venue_equipment:
         print("Equipment in each venues stage:")
         for venue, equipment in venue_equipment.items():
@@ -685,10 +692,31 @@ def display_equipment(): #Displays ALL the equipment on a given stage for a give
     else:
         print("No equipment available.")
 
+def venue_main_checker(admin): # Brings the user to the admin main or the non-admin main
+    if admin == False:
+        venue_nonadmin_main()
+    elif admin == True:
+        venue_main()
+
+def venue_nonadmin_main():
+    while True:
+        cs()
+        choice = int_input("\nArtist List\n\n1. Display\n2. Search\n3. Exit\n")
+        if choice == 1:
+            artist_display()
+        elif choice == 2:
+            search_artist()
+        elif choice == 3:
+            main(admin,id)
+        else:
+            print("Not in Range\nClick Enter to Continue")
+            input()
+
 def venue_main(): #main user interface for venues
     while True:
+        cs()
         choice = input("""
-What would you like to do?
+What would you like to do?: 
 1. Add Venue
 2. Remove Venue
 3. Add Equipment
