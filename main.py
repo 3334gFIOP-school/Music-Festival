@@ -291,6 +291,9 @@ def buy_ticket(total_money,tickets_bought,male_ratio,female_ratio,id): # Buy a t
     cs()
     print("Buying Ticket\n") # Visual
     firstname = input("What is your first name?: ") # Name Input
+    if firstname == "":
+        print("Thats not a name, so your new name is 'Blank'")
+        firstname = "Blank"
     lastname = input("What is your last name?: ")
     age = int_input("How old are you?: ") # Age Selection
     if 120 < age or age < 0:
@@ -348,7 +351,7 @@ def buy_ticket(total_money,tickets_bought,male_ratio,female_ratio,id): # Buy a t
     print(f"Cost: ${getcost(membership,duration)}")
     cost = getcost(membership,duration)
     quick_choice1 = input("\nType yes to confirm, anything else will cancel: ") # Confirming Information
-    if quick_choice1 == "yes":
+    if quick_choice1.lower() == "yes":
         cs()
         print(f"Buying {membership} ticket") # Buying Ticket
         creditcard = int_input("Enter credit card number, with no spaces (1234123412341234): ") # Getting money
