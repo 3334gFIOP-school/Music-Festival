@@ -556,7 +556,7 @@ def schedule_main(admin,performances): # schedule main function
     if admin == True:
         while True:
             cs()
-            choice = int_input("SCHEDULE MENU\n\n1.add to schedule\n\n2. remove item from schedule\n3. exit\n\nPick one (1-3): ")
+            choice = int_input("SCHEDULE MENU\n\n1.add to schedule\n2. remove item from schedule\n3. exit\n\nPick one (1-3): ")
 
             if choice == 1: # adds schedule info
                 schedule_add(performances)
@@ -570,10 +570,8 @@ def schedule_main(admin,performances): # schedule main function
         while True:
             cs()
             choice = int_input("SCHEDULE MENU\n\n1. See schedule\n2. Exit\n\nChoose one (1-2): ")
-            if choice == 1: # Buy Ticket
-                
-                pass
-
+            if choice == 1: # See Schedule
+                print_schedule()
             elif choice == 2: # Exit
                 main(admin,id,performances)
 
@@ -582,14 +580,19 @@ def schedule_main(admin,performances): # schedule main function
 
 # adds people to schedule
 def schedule_add(performances):
-    artist_name_add=input("what is the artist's name? ")
-    artist_intrument_add=input("what is their intrument? ")
-    artist_gener_add=input("what is their gener? ")
-    artist_time_add=input("what time are they playing? ")
-    new_artist_list=[artist_name_add]
-    performances.append()
-    loop_num+=1
-    print(artist_list)
+    artist_name_add=input("what is the artist's name?: ")
+    artist_intrument_add=input("what is their intrument?: ")
+    artist_genre_add=input("what is their genre?: ")
+    artist_time_add=input("what time are they playing?: ")
+    new_artist_list=[artist_name_add,artist_intrument_add,artist_genre_add,artist_time_add]
+    performances.append(new_artist_list)
+    input("Press enter to continue")
+
+def print_schedule():
+    print("Schedule with name and time:\n")
+    for x in performances:
+        print(f"Name: {performances[x][0]} Time: {performances[x][3]}")
+    input("\nPress enter to continue")
 
 # removes from schedule
 def schedule_remove(performances):
