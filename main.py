@@ -57,7 +57,7 @@ def main(admin,id,performances): # Main function for running things
 ╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═╝ ╚═════╝    ╚═╝     ╚══════╝╚══════╝   ╚═╝   ╚═╝  ╚═══╝  ╚═╝  ╚═╝╚══════╝
                            \nWelcome {user}\n\n1. Information\n2. Tickets\n3. Schedule\n4. Artists\n5. Recommendation\n6. Venues\n7. Admin Login\n8. Exit\n\nChoose one (1-8): """)
         if choice == 1: # Information
-            pass
+            information()
         elif choice == 2: # Tickets
             ticket_main(admin,id,performances)
         elif choice == 3: # Schedule
@@ -74,6 +74,24 @@ def main(admin,id,performances): # Main function for running things
             cs()
             print('Thanks for attending!')
             exit()
+
+def information():
+    cs()
+    print("""
+Welcome to our music festival!
+          
+We have daily performances ranging from 7:00am to 10:00pm
+
+Our music shows have a variety of different genres, from pop to rock!
+          
+Music Festival Directors:
+          
+Jackson Hauley
+Gavin Pierce
+Luke Murdock
+Nicole Saldana""")# Displays information about festival
+    input("\nPress enter to continue")
+    main(admin,id,performances)
 
 def int_input(text): # Only takes in integers
     while True:
@@ -109,7 +127,7 @@ def recommendation():
     cs()
     recommendation_search = input("What genre/artists do you like the best? (exact): ")
     for x in range(len(performances)):
-        for i in tickets[x]:
+        for i in performances[x]:
             if str(i) == recommendation_search:
                 print(f"Name: {performances[x][0]}   Insturment: {performances[x][1]}   Genre: {performances[x][2]}   Time: {performances[x][3]}")
     input("Press enter to continue")
@@ -422,7 +440,7 @@ def artist_main(admin): # Brings the user to the admin main or the non-admin mai
 def artist_nonadmin_main():
     while True:
         cs()
-        choice = int_input("\nArtist List\n\n1. Display\n2. Search\n3. Exit\n")
+        choice = int_input("\nArtist List\n\n1. Display\n2. Search\n3. Exit\n\nChoose one (1-3): ")
         if choice == 1:
             artist_display()
         elif choice == 2:
@@ -436,7 +454,7 @@ def artist_nonadmin_main():
 def artist_admin_main(): # Lets the user choose how they want to manipulate the artist list.
     while True:
         cs()
-        choice = int_input("\nArtist List Management\n\n1. Display\n2. Search\n3. Add\n4. Remove\n5. Edit\n6. Exit\n")
+        choice = int_input("\nArtist List Management\n\n1. Display\n2. Search\n3. Add\n4. Remove\n5. Edit\n6. Exit\n\nChoose one (1-6): ")
         if choice == 1:
             artist_display()
         elif choice == 2:
