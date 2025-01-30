@@ -31,7 +31,7 @@ artist_list.extend(performances)
 for artist_num, artist in enumerate(performances):
     artist_list[artist_num].pop()
     artist_list[artist_num].remove(artist[1])
-    artist_list[artist_num].append(60)
+    artist_list[artist_num].append(random.randint(0, 120))
 
 
 
@@ -625,9 +625,11 @@ def display_venues(): #displays the venues
         print("_______Venues available:_______")
         for venue in venue_names:
             print(f"- {venue}\n")
+            input("Press enter to continue")
     else:
         print("____________________")
         print("No venues available.")
+        input("Press enter to continue")
 
 def add_venue(): #Adds venues+stages
     cs()
@@ -639,6 +641,7 @@ def add_venue(): #Adds venues+stages
     venue_stages[venue] = stage
     venue_equipment[venue] = [] 
     print(f"{stage} was added to the {venue}.")
+    input("Press enter to continue")
 
 def remove_venue(): #Removes venues
     cs()
@@ -650,8 +653,10 @@ def remove_venue(): #Removes venues
         del venue_stages[venue]  
         del venue_equipment[venue]  
         print(f"{venue} and it's information has been removed.")
+        input("Press enter to continue")
     else:
         print(f"{venue} was not found.")
+        input("Press enter to continue")
 
 def display_stages(): #Displays venues and all their stages
     cs()
@@ -660,8 +665,10 @@ def display_stages(): #Displays venues and all their stages
         print("____________________")
         for venue, stage in venue_stages.items():
             print(f"Venue: {venue} | Stage: {stage}")
+            input("Press enter to continue")
     else:
         print("There are no stages yet.")
+        input("Press enter to continue")
 
 def add_equipment(): #Adds equipment to the venues
     cs()
@@ -670,8 +677,10 @@ def add_equipment(): #Adds equipment to the venues
         equipment = input("Enter the equipment name to add: ").lower()
         venue_equipment[venue].append(equipment)
         print(f"{equipment} added to venue {venue} successfully! ")
+        input("Press enter to continue")
     else:
         print(f"{venue} was not found.")
+        input("Press enter to continue")
 
 def remove_equipment(): #removes equipment
     cs()
@@ -681,10 +690,13 @@ def remove_equipment(): #removes equipment
         if equipment in venue_equipment[venue]:
             venue_equipment[venue].remove(equipment)
             print(f"Equipment {equipment} removed from {venue} successfully!")
+            input("Press enter to continue")
         else:
             print(f"{equipment} was not found at {venue}.")
+            input("Press enter to continue")
     else:
         print(f"{venue} was not found.")
+        input("Press enter to continue")
 
 def display_equipment(): #Displays ALL the equipment on a given stage for a given venue
     cs()
@@ -697,11 +709,14 @@ def display_equipment(): #Displays ALL the equipment on a given stage for a give
                 print(f"Venue: {venue} | Stage: {stage} | Equipment:")
                 for item in equipment:
                     print(f"   - {item}")
+                input("Press enter to continue")
             else:
                 print("________________________________________________")
                 print(f"Venue: {venue} | Stage: {stage} | No equipment")
+                input("Press enter to continue")
     else:
         print("No equipment available.")
+        input("Press enter to continue")
 
 def venue_main_checker(admin): # Brings the user to the admin main or the non-admin main
     if admin == False:
