@@ -712,7 +712,7 @@ def venue_main_checker(admin): # Brings the user to the admin main or the non-ad
 def venue_nonadmin_main():
     while True:
         cs()
-        choice = int_input("Venue Main\n\n1. display venues and their associated information\n 2. Exit\n\nChoose one (1-2): ")
+        choice = int_input("Venue Main\n\n1. Display venues and their associated information\n2. Exit\n\nChoose one (1-2): ")
         if choice == 1:
            display_equipment()
         elif choice == 2:
