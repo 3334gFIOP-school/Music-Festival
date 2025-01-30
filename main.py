@@ -712,14 +712,13 @@ def venue_main_checker(admin): # Brings the user to the admin main or the non-ad
 def venue_nonadmin_main():
     while True:
         cs()
-        choice = int_input("\n1. display venues and their associated information\n 2. Exit\n")
+        choice = int_input("Venue Main\n\n1. display venues and their associated information\n 2. Exit\n\nChoose one (1-2): ")
         if choice == 1:
            display_equipment()
         elif choice == 2:
            search_artist()
         elif choice == 3:
             main(admin,id,performances)
-
         else:
             print("Not in Range\nClick Enter to Continue")
             input()
@@ -729,6 +728,7 @@ def venue_main(): #main user interface for venues
         cs()
         choice = input("""
 What would you like to do?: 
+                       
 1. Add Venue
 2. Remove Venue
 3. Add Equipment
@@ -737,6 +737,8 @@ What would you like to do?:
 6. Display Stages
 7. Display Equipment
 8. Exit
+                       
+Choose one (1-8):
 """)
         if choice == '1':
             add_venue()
