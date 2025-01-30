@@ -712,7 +712,7 @@ def venue_nonadmin_main():
         elif choice == 2:
             search_artist()
         elif choice == 3:
-            main(admin,id)
+            main(admin,id,performances)
         else:
             print("Not in Range\nClick Enter to Continue")
             input()
