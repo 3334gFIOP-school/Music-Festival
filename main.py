@@ -698,7 +698,7 @@ def remove_equipment(): #removes equipment
         print(f"{venue} was not found.")
         input("Press enter to continue")
 
-def display_equipment(): #Displays ALL the equipment on a given stage for a given venue
+def display_equipment(): #Displays ALL the equipment on a gieven stage for a given venue
     cs()
     if venue_equipment:
         print("Equipment in each venues stage:")
