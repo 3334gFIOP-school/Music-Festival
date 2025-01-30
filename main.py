@@ -27,6 +27,13 @@ performances = [
     ["Noah Fisher", "Trumpet", "Big Band", "5:30pm Jan 21st 2025"],
     ["Emily Stone", "Clarinet", "Contemporary", "7:30pm Jan 21st 2025"]
 ]
+artist_list.extend(performances)
+for artist_num, artist in enumerate(performances):
+    artist_list[artist_num].pop()
+    artist_list[artist_num].remove(artist[1])
+    artist_list[artist_num].append(60)
+
+
 
 # Jacksons Variables
 tickets = []
@@ -125,10 +132,10 @@ def cs(): # Clear Screen
 
 def recommendation(): 
     cs()
-    recommendation_search = input("What genre/artists do you like the best? (exact): ")
+    recommendation_search = input("What genre/artists do you like the best? (exact): ").title()
     for x in range(len(performances)):
         for i in performances[x]:
-            if str(i) == recommendation_search:
+            if str(i).title() == recommendation_search:
                 print(f"Name: {performances[x][0]}   Insturment: {performances[x][1]}   Genre: {performances[x][2]}   Time: {performances[x][3]}")
     input("Press enter to continue")
 
@@ -426,7 +433,6 @@ Your information is kept in a secure online server with {random.randint(random.r
 
 
         
-
 
 
 
