@@ -27,6 +27,35 @@ performances = [
     ["Noah Fisher", "Trumpet", "Big Band", "5:30pm Jan 21st 2025"],
     ["Emily Stone", "Clarinet", "Contemporary", "7:30pm Jan 21st 2025"]
 ]
+
+performances_names = [
+    "Zack Mills",
+    "Lena Brooks",
+    "Evan Matthews",
+    "Sophia Reyes",
+    "James Carter",
+    "Tina Williams",
+    "Oliver Grant",
+    "Chloe Anderson",
+    "Noah Fisher",
+    "Emily Stone"
+]
+
+
+performances_original = (
+    ["Zack Mills", "Guitar", "Country", "11:00am Jan 20th 2025"],
+    ["Lena Brooks", "Piano", "Jazz", "2:00pm Jan 20th 2025"],
+    ["Evan Matthews", "Drums", "Rock", "4:30pm Jan 20th 2025"],
+    ["Sophia Reyes", "Violin", "Classical", "6:00pm Jan 20th 2025"],
+    ["James Carter", "Saxophone", "Blues", "8:00pm Jan 20th 2025"],
+    ["Tina Williams", "Vocals", "Pop", "10:00am Jan 21st 2025"],
+    ["Oliver Grant", "Guitar", "Folk", "12:00pm Jan 21st 2025"],
+    ["Chloe Anderson", "Cello", "Chamber Music", "3:00pm Jan 21st 2025"],
+    ["Noah Fisher", "Trumpet", "Big Band", "5:30pm Jan 21st 2025"],
+    ["Emily Stone", "Clarinet", "Contemporary", "7:30pm Jan 21st 2025"]
+)
+
+
 artist_list.extend(performances)
 for artist_num, artist in enumerate(performances):
     artist_list[artist_num].pop()
@@ -577,13 +606,15 @@ def schedule_main(admin,performances): # schedule main function
     if admin == True:
         while True:
             cs()
-            choice = int_input("SCHEDULE MENU\n\n1.add to schedule\n2. remove item from schedule\n3. exit\n\nPick one (1-3): ")
+            choice = int_input("SCHEDULE MENU\n\n1.add to schedule\n2. remove item from schedule\n3. See schedule \n4. exit\n\nPick one (1-4): ")
 
             if choice == 1: # adds schedule info
                 schedule_add(performances)
             elif choice == 2: # removes from schedule
                 schedule_remove(performances)
-            elif choice == 3: # exit
+            elif choice==3: #show shcedule
+                print_schedule(performances)
+            elif choice == 4: # exit
                 main(admin,id,performances)
             else:
                 input('Invalid Input!\nPress enter to continue')
@@ -600,29 +631,27 @@ def schedule_main(admin,performances): # schedule main function
 # the schedule
 
 # adds people to schedule
-def schedule_add(performances):
+def schedule_add(performances_names):
     artist_name_add=input("what is the artist's name?: ")
-    artist_intrument_add=input("what is their intrument?: ")
-    artist_genre_add=input("what is their genre?: ")
-    artist_time_add=input("what time are they playing?: ")
-    new_artist_list=[artist_name_add,artist_intrument_add,artist_genre_add,artist_time_add]
-    performances.append(new_artist_list)
+    performances_names.append(artist_name_add)
     input("Press enter to continue")
 
 def print_schedule():
     print("Schedule with name and time:\n")
-    for x in performances:
-        print(f"Name: {performances[x][0]} Time: {performances[x][3]}")
+    for x in performances_names:
+        print(f"Name: {performances_names[x][0]} Time: {performances_names[x][3]}")
     input("\nPress enter to continue")
 
 # removes from schedule
-def schedule_remove(performances):
+def schedule_remove(performances_names):
             artist_remove=input("what is the artist's name that you would like to remove? (exact): ")
-            try: performances.remove(artist_remove)
-            except ValueError:
-                print("Not in list!")
-                input("Press enter to continue")
-            input("Removed, press enter to continue.")
+            if artist_remove in performances_names:
+                performances_names.remove(artist_remove)
+                print("item removed from list.")
+                input("Removed, press enter to continue.")
+            else:
+                print("thats not in the list.")
+                input("Press enter to continue") 
 
 # changes schedule
 def schedule_change():
