@@ -605,9 +605,11 @@ def print_schedule():
 # removes from schedule
 def schedule_remove(performances):
             artist_remove=input("what is the artist's name that you would like to remove? (exact): ")
-            performances.remove(artist_remove)
-            performances-=1
-            print(artist_list)
+            try: performances.remove(artist_remove)
+            except ValueError:
+                print("Not in list!")
+                input("Press enter to continue")
+            input("Removed, press enter to continue.")
 
 # changes schedule
 def schedule_change():
