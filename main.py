@@ -136,7 +136,9 @@ def recommendation():
     for x in range(len(performances)):
         for i in performances[x]:
             if str(i) == recommendation_search:
-                print(f"Name: {performances[x][0]}   Insturment: {performances[x][1]}   Genre: {performances[x][2]}   Time: {performances[x][3]}")
+                try: print(f"Name: {performances[x][0]}   Insturment: {performances[x][1]}   Genre: {performances[x][2]}   Time: {performances[x][3]}")
+                except ValueError:
+                    input("Not in list\nPress enter to continueeee (then do it again because reasons)")
     input("Press enter to continue")
 
 
