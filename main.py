@@ -33,7 +33,18 @@ for artist_num, artist in enumerate(performances):
     artist_list[artist_num].remove(artist[1])
     artist_list[artist_num].append(random.randint(0, 120))
 
-
+performances_tuple = {
+    ["Zack Mills", "Guitar", "Country", "11:00am Jan 20th 2025"],
+    ["Lena Brooks", "Piano", "Jazz", "2:00pm Jan 20th 2025"],
+    ["Evan Matthews", "Drums", "Rock", "4:30pm Jan 20th 2025"],
+    ["Sophia Reyes", "Violin", "Classical", "6:00pm Jan 20th 2025"],
+    ["James Carter", "Saxophone", "Blues", "8:00pm Jan 20th 2025"],
+    ["Tina Williams", "Vocals", "Pop", "10:00am Jan 21st 2025"],
+    ["Oliver Grant", "Guitar", "Folk", "12:00pm Jan 21st 2025"],
+    ["Chloe Anderson", "Cello", "Chamber Music", "3:00pm Jan 21st 2025"],
+    ["Noah Fisher", "Trumpet", "Big Band", "5:30pm Jan 21st 2025"],
+    ["Emily Stone", "Clarinet", "Contemporary", "7:30pm Jan 21st 2025"]
+}
 
 # Jacksons Variables
 tickets = []
