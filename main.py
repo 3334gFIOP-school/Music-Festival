@@ -206,7 +206,7 @@ def search_tickets(): # Search tickets
     print()
     for x in range(len(tickets)):
         for i in tickets[x]:
-            if str(i) == search_keyword:
+            if str(i) == search_keyword or f"{tickets[x][0]} {tickets[x][1]}" == search_keyword:
                 print(f"Name: {tickets[x][0]} {tickets[x][1]}   ID: {tickets[x][6]}")
     search_ID = int_input("\nWhich ticket do you want to open? (ID) (type 0 to exit): ")
     print()
