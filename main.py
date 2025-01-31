@@ -166,7 +166,7 @@ def ticket_main(admin,id,performances): # Ticket main function (runs all ticket 
             elif choice == 2: # Ticket Information
                 ticket_information()
             elif choice == 3: # Exit
-                main(admin,id,performances)
+                break
 
 def gen_rand_ticket(age_list,total_money,tickets_bought,male_ratio,female_ratio,id): # Random Ticket Generator
     cs()
