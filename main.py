@@ -135,7 +135,7 @@ def recommendation():
     recommendation_search = input("What genre/artists do you like the best? (exact): ").title()
     for x in range(len(performances)):
         for i in performances[x]:
-            if str(i).title() == recommendation_search:
+            if str(i) == recommendation_search:
                 print(f"Name: {performances[x][0]}   Insturment: {performances[x][1]}   Genre: {performances[x][2]}   Time: {performances[x][3]}")
     input("Press enter to continue")
 
@@ -446,7 +446,7 @@ def artist_main(admin): # Brings the user to the admin main or the non-admin mai
     elif admin == True:
         artist_admin_main()
 
-def artist_nonadmin_main():
+def artist_nonadmin_main(): # Lets the user choose how they want to view the artist list.
     while True:
         cs()
         choice = int_input("\nArtist List\n\n1. Display\n2. Search\n3. Exit\n\nChoose one (1-3): ")
@@ -455,12 +455,12 @@ def artist_nonadmin_main():
         elif choice == 2:
             search_artist()
         elif choice == 3:
-            main(admin,id,performances)
+            break
         else:
-            print("Not in Range\nPress enter to continue")
+            print("Not in Range\nPress enter to try again")
             input()
 
-def artist_admin_main(): # Lets the user choose how they want to manipulate the artist list.
+def artist_admin_main(): # Lets the admin choose how they want to manipulate the artist list.
     while True:
         cs()
         choice = int_input("\nArtist List Management\n\n1. Display\n2. Search\n3. Add\n4. Remove\n5. Edit\n6. Exit\n\nChoose one (1-6): ")
@@ -475,9 +475,9 @@ def artist_admin_main(): # Lets the user choose how they want to manipulate the 
         elif choice == 5:
             edit_artist()
         elif choice == 6:
-            main(admin,id,performances)
+            break
         else:
-            print("Not in Range\nPress enter to continue")
+            print("Not in Range\nPress enter to try again")
             input()
 
 def artist_display(): # Displays the artist list
@@ -507,9 +507,9 @@ def add_artist(): # Lets the user add an artist and their information to the lis
     print("Adding An Artist")
     artist_name = str_input("What is the artist's name?: ")
     artist_genre = str_input("What is the artist's genre?: ")
-    artist_time = int_input("What is the artist's time duration in minutes?: ")
+    artist_time = int_input("How many minutes is the artist's performace?: ")
     artist_list.append([artist_name, artist_genre, artist_time])
-    input("Press enter to continue")
+    input("Adding Successful\nPress enter to continue")
 
 def remove_artist(): # Removes the inputted artist from the list
     removed = 0
@@ -523,6 +523,8 @@ def remove_artist(): # Removes the inputted artist from the list
     if removed == 0:
         print("Not in List\nPress enter to continue")
         input()
+    elif removed == 1:
+        input("Removal Successful\nPress enter to continue")
 
 def edit_artist(): # Edits the specified information to the inputted information from a specific artist
     edited = 0
@@ -540,10 +542,8 @@ def edit_artist(): # Edits the specified information to the inputted information
             try:
                 new_text = int(new_text)
             except:
-                input("Invalid Input! (only integers accepted)\nPress Enter to Continue")
-
+                input("Invalid Input! (only integers accepted)\nPress enter to try again")
                 continue
-        input("Press enter to continue")
         break
 
     for artist_num, artist in enumerate(artist_list):
@@ -553,6 +553,8 @@ def edit_artist(): # Edits the specified information to the inputted information
     if edited == 0:
         print("Not In List\nPress enter to continue")
         input()
+    elif edited == 1:
+        input("Editing Successful\nPress enter to continue")
 
 
 
@@ -797,3 +799,4 @@ def admin_check(admin,id,performances): # Checks if your admin or not (login int
 
 # Running the Code
 admin_check(admin,id,performances) # Checks if they are admin or not, then runs main
+  
