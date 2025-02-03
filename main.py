@@ -629,34 +629,29 @@ def schedule_main(admin,performances): # schedule main function
 
 
 # the schedule
-
 # adds people to schedule
-def schedule_add(performances_names):
+def schedule_add(performances):
     artist_name_add=input("what is the artist's name?: ")
-    performances_names.append(artist_name_add)
+    artist_insturment_add=input("what is the artist's insturment?: ")
+    artist_genre_add=input("what is the artist's genre?: ")
+    artist_tme_add=input("what is the artist playing?: ")
+    performances.append([artist_name_add,artist_insturment_add,artist_genre_add,artist_tme_add])
     input("Press enter to continue")
 
-def print_schedule():
+def print_schedule(performances):
     print("Schedule with name and time:\n")
-    for x in performances_names:
-        print(f"Name: {performances_names[x][0]} Time: {performances_names[x][3]}")
+    for x in len(range(performances)):
+        print(f"Name: {performances[0]} Time: {performances[3]}")
     input("\nPress enter to continue")
 
 # removes from schedule
-def schedule_remove(performances_names):
+def schedule_remove(performances):
             artist_remove=input("what is the artist's name that you would like to remove? (exact): ")
-            if artist_remove in performances_names:
-                performances_names.remove(artist_remove)
-                print("item removed from list.")
-                input("Removed, press enter to continue.")
-            else:
-                print("thats not in the list.")
-                input("Press enter to continue") 
-
-# changes schedule
-def schedule_change():
-            artist_change=("what is the artist that you would like to change?")
-
+            for x in range(len(performances)):
+                if artist_remove in performances[x]:
+                    performances_names.remove(artist_remove)
+                    print("item removed from list.")
+                    input("Removed, press enter to continue.")
 
 
 #this is nicoles function
